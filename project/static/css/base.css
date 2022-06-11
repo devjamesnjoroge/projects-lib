@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body{
+  font-size: 18px;
+  background-color: #00008B;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+#hero{
+   background: linear-gradient(to right, #000000c4, #000000c4), url(../images/hero.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 60vh;
+  width: auto;
+}

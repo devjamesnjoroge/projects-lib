@@ -1,0 +1,53 @@
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container pt-2">
+
+    <div class="navbar-brand" href="#">
+      <svg width="45" height="34" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.8535 0L43.7071 37.8514H0L21.8535 0Z" fill="#7289DA"/>
+      <path d="M20.8965 19.1781L25.9956 28.0101H15.7973L20.8965 19.1781Z" fill="white"/>
+      <path d="M20.0553 18.5052L40.4519 6.72916L46.3399 16.9275L25.9433 28.7035L20.0553 18.5052Z" fill="white"/>
+      <path d="M50 11.6078C50 14.8596 47.3638 17.4958 44.112 17.4958C40.8601 17.4958 38.224 14.8596 38.224 11.6078C38.224 8.35593 40.8601 5.71978 44.112 5.71978C47.3638 5.71978 50 8.35593 50 11.6078Z" fill="white"/>
+      </svg>
+
+      <span class="mt-1">WEBSITERATER</span>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Leaderboard</a>
+        </li>
+      </ul>
+
+        <div class="nav_wrap">
+          <div class="nav_pic">
+
+          </div>
+          <div class="dropdown_menu">
+            <a class="dropdown_item" href="#">Profile</a>
+            <a class="dropdown_item" href="#">Your projects</a>
+            <a class="dropdown_item" href="#">Your reviews</a>
+            <div class="dropdown_divider"></div>
+            <a class="dropdown_item" href="#">Logout</a>
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+</nav>
