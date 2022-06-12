@@ -41,7 +41,10 @@
           </div>
         </div>
       </div>
+      {% if user.is_authenticated %}
+      {% else %}
       <div class="btn btn-primary text-light offset-1 mt-5">Sign Up</div>
+      {% endif %}
     </div>
 
   </div>

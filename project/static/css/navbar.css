@@ -7,6 +7,15 @@
   border-radius: 50%;
 }
 
+#collapse{
+  background-color: #FFFFFF;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#collapse:hover{
+  background-color: #F5F5;
+}
 
 
 @media screen and (min-width: 992px) {
@@ -41,6 +50,12 @@
       background-color: #7289DA;
       gap: 14px;
       display: none;
+      position: absolute;
+      right: 0;
+      top: 70px;
+      z-index: 999;
+      width: max-content;
+      padding: 1rem 2rem;
     }
 
     .dropdown_item{

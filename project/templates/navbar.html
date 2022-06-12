@@ -32,7 +32,7 @@
           <a class="nav-link" href="#">Leaderboard</a>
         </li>
       </ul>
-
+        {% if user.is_authenticated %}
         <div class="nav_wrap">
           <div class="nav_pic">
 
@@ -42,11 +42,17 @@
             <a class="dropdown_item" href="#">Your projects</a>
             <a class="dropdown_item" href="#">Your reviews</a>
             <div class="dropdown_divider"></div>
-            <a class="dropdown_item" href="#">Logout</a>
+            <a class="dropdown_item" href="/logout/">Logout</a>
+            <img id="collapse" height="20px" width="20px" src="{% static 'images/collapse.svg' %}" alt="">
           </div>
 
         </div>
-
+        {% else %}
+       <ul class="navbar nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/accounts/signup/">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="/accounts/login/">Login</a></li>
+       </ul>
+        {% endif %}
     </div>
 
   </div>
