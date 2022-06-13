@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 
-from .models import Profile
+from .models import Profile, Project
 
-from . forms import ProfileForm
+from . forms import ProfileForm, ProjectForm
 
 # Create your views here.
 
@@ -56,4 +56,14 @@ def profile_edit(request, uname):
         form = ProfileForm(instance=profile)
     return render(request, 'profile.html', {'form': form})
 
-    
+def add_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = request.user
+            project.save()
+            return redirect('index')
+    else:
+        form = ProjectForm()
+    return render(request, 'add_project.html', {'form': form})
