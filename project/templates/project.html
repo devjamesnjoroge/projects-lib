@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+       {% for project in projects %}
+       <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{project.title}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="p-image" style="background-image: url('{{project.image.url}}');">
+                    <a target="_blank" href="{{project.link}}">Live link</a>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>Design</h6>
+                            <div class="circle">
+                                <span>9/10</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <h6>Usability</h6>
+                            <div class="circle">
+                                <span>8/10</span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <h6>Content</h6>
+                            <div class="circle">
+                                <span>7/10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><a href="">Rate this website</a></p>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 offset-md-1">
+                            <img  height="36px" width="36px" src="{{project.user.profile.profile_pic.url}}" alt="img" class="img-fluid img-responsive rounded-circle">
+                        </div>
+                        <div class="col-md-4">{{project.user.username}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       {% endfor %}
+    </div>
+</div>
+{% endblock %}

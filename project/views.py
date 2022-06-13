@@ -67,3 +67,8 @@ def add_project(request):
     else:
         form = ProjectForm()
     return render(request, 'add_project.html', {'form': form})
+
+def projects(request):
+    projects = Project.objects.all()
+    print(projects)
+    return render(request, 'project.html', {'projects': projects})
