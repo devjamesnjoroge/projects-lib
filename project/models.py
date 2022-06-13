@@ -12,3 +12,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Project(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = CloudinaryField('image')
+    link = models.URLField(blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

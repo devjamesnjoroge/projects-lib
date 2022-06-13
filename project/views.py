@@ -55,3 +55,5 @@ def profile_edit(request, uname):
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile.html', {'form': form})
+
+    
