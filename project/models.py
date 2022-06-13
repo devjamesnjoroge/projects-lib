@@ -22,3 +22,17 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Rate(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    design_rate = models.IntegerField(default=0, validators=[])
+    usability_rate = models.IntegerField(default=0, validators=[])
+    content_rate = models.IntegerField(default=0, validators=[])
+    total_rate = models.IntegerField(default=0, validators=[])
+    def save(self, *args, **kwargs):
+        self.total_rate = self.design_rate + self.usability_rate + self.content_rate
+        super(Rate, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.username

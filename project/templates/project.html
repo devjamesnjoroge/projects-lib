@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
        {% for project in projects %}
-       <div class="col-md-6 offset-md-3">
+       <div class="col-lg-5 offset-lg-1">
         <div class="card">
             <div class="card-header">
                 <h5>{{project.title}}</h5>
@@ -41,16 +41,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <p><a href="">Rate this website</a></p>
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-lg-6"></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 offset-md-1">
+                        <div class="col-lg-2 offset-lg-1">
                             <img  height="36px" width="36px" src="{{project.user.profile.profile_pic.url}}" alt="img" class="img-fluid img-responsive rounded-circle">
                         </div>
-                        <div class="col-md-4">{{project.user.username}}</div>
+                        <div class="col-lg-6">{{project.user.username}}</div>
                     </div>
                 </div>
             </div>
