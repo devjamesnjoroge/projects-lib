@@ -39,3 +39,19 @@ def profile_display(request, uname):
     else:
         profile = None
     return render(request, 'profile_display.html', {'profile': profile})
+
+def profile_edit(request, uname):
+    if uname != request.user.username:
+        return render(request, '403.html')
+    if Profile.objects.filter(user__username = uname).exists():
+        profile = Profile.objects.get(user__username = uname)
+    else:
+        profile = None
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_display', uname=uname)
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile.html', {'form': form})
