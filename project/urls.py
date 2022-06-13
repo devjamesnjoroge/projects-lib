@@ -10,4 +10,5 @@ urlpatterns = [
     path('profile/', views.create_profile, name='profile'),
     path('profile/display/<uname>', views.profile_display, name='profile_display'),
     path('profile/edit/<uname>', views.profile_edit, name='profile_edit'),
+    path('project/add/', views.add_project, name='add_project'),
 ]
