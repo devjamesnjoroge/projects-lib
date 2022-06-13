@@ -26,3 +26,16 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+.card .card-title, .card-footer{
+  color: #00008B;
+  padding: 1vh 2vw;
+}
+
+#avatar {
+  height: 14rem;
+  width: 14rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}

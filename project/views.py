@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 
+from .models import Profile
+
 from . forms import ProfileForm
 
 # Create your views here.
@@ -31,4 +33,9 @@ def create_profile(request):
         form = ProfileForm()
     return render(request, 'profile.html', {'form': form})
 
-    
+def profile_display(request, uname):
+    if Profile.objects.filter(user__username = uname).exists():
+        profile = Profile.objects.get(user__username = uname)
+    else:
+        profile = None
+    return render(request, 'profile_display.html', {'profile': profile})
