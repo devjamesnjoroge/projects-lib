@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 
-from .models import Profile, Project
+from .models import Profile, Project, Rate
 
-from . forms import ProfileForm, ProjectForm
+from . forms import ProfileForm, ProjectForm, RateForm
 
 # Create your views here.
 
@@ -17,7 +17,7 @@ def create_user(request):
         email = request.POST['email']
         user = User.objects.create_user(username, email, password)
         user.save()
-        return render(request, 'index.html')
+        return redirect('/accounts/login/')
     return render(request, 'registration/signup.html')
 
 
@@ -72,3 +72,20 @@ def projects(request):
     projects = Project.objects.all()
     print(projects)
     return render(request, 'project.html', {'projects': projects})
+
+def rate(request, pid):
+    if Rate.objects.filter(project__id = pid).exists():
+        rated = True
+    else:
+        rated = False
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = request.user
+            rate.project = Project.objects.get(id=pid)
+            rate.save()
+            return redirect('index')
+    else:
+        form = RateForm()
+    return render(request, 'rate.html', {'form': form, 'rated': rated})

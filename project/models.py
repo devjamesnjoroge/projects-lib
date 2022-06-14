@@ -1,6 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -26,10 +27,10 @@ class Project(models.Model):
 class Rate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    design_rate = models.IntegerField(default=0, validators=[])
-    usability_rate = models.IntegerField(default=0, validators=[])
-    content_rate = models.IntegerField(default=0, validators=[])
-    total_rate = models.IntegerField(default=0, validators=[])
+    design_rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(10)])
+    usability_rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(10)])
+    content_rate = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(10)])
+    total_rate = models.PositiveIntegerField(default=0)
     def save(self, *args, **kwargs):
         self.total_rate = self.design_rate + self.usability_rate + self.content_rate
         super(Rate, self).save(*args, **kwargs)

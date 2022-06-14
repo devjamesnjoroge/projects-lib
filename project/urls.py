@@ -12,4 +12,5 @@ urlpatterns = [
     path('profile/edit/<uname>', views.profile_edit, name='profile_edit'),
     path('project/add/', views.add_project, name='add_project'),
     path('projects/', views.projects, name='projects'),
+    path('rate/<pid>', views.rate, name='rate'),
 ]

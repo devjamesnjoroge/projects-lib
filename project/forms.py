@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Profile, Project
+from .models import Profile, Project, Rate
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -13,3 +13,9 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = ['title', 'description', 'image', 'link']
     exclude = ['user']
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Rate
+        fields = ['design_rate', 'usability_rate', 'content_rate']
+    exclude = ['user', 'project']
