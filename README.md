@@ -1,6 +1,6 @@
 # Website Rater
 
->[AjedidahMwanzia](https://github.com/devjamesnjoroge)  
+>[Devjamesnjoroge](https://github.com/devjamesnjoroge)  
   
 # Description  
 This project allows users to post their projects for other users to rate according to design, usability and content 
@@ -80,8 +80,8 @@ The following endpoints are available on the server:
 ## Contact Information   
 
 
--   Email- [Ajedidah Mwanzia](mailto:developerjaymmy@gmail.com)
--   Linkedin - [Ajedidah Mwanzia](https://www.linkedin.com/in/devjamesnjoroge/)
+-   Email- [James Njoroge](mailto:developerjaymmy@gmail.com)
+-   Linkedin - [James Njoroge](https://www.linkedin.com/in/devjamesnjoroge/)
   
 ## License 
 
