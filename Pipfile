@@ -12,6 +12,9 @@ python-decouple = "*"
 django-bootstrap4 = "*"
 psycopg2 = "*"
 django = "==3.2"
+whitenoise = "*"
+django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
