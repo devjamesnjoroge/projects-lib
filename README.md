@@ -60,11 +60,11 @@ Open the application on your browser `127.0.0.1:8000`.
 The following endpoints are available on the server:
 
 ```
- /api/project/
+ /api/projects/
 ```
 
 ```
- /api/profile/
+ /api/profiles/
  ```
 
 ## Technology used  
