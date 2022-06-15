@@ -28,4 +28,20 @@ class ProjectTest(TestCase):
     
     def test_project_str(self):
         self.assertEqual(self.project.__str__(), 'test title')
-    
+
+class RateTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.project = Project.objects.create(title='test title', description='test description', user=self.user)
+        self.rate = Rate.objects.create(user=self.user, project=self.project, design_rate=5, usability_rate=5, content_rate=5)
+
+    def test_rate_creation(self):
+        self.assertEqual(self.rate.user.username, 'testuser')
+        self.assertEqual(self.rate.project.title, 'test title')
+        self.assertEqual(self.rate.design_rate, 5)
+        self.assertEqual(self.rate.usability_rate, 5)
+        self.assertEqual(self.rate.content_rate, 5)
+        self.assertEqual(self.rate.total_rate, 15)
+
+    def test_rate_str(self):
+        self.assertEqual(self.rate.__str__(), 'testuser')
