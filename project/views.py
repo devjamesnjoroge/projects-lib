@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+
+from project.permissions import IsAdminOrReadOnly
 from .models import Profile, Project, Rate
 from . forms import ProfileForm, ProjectForm, RateForm
 from rest_framework.response import Response
@@ -94,6 +96,7 @@ def rate(request, pid):
 
 
 class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request):
         profiles = Profile.objects.all()
         serializer = ProfileSerializer(profiles, many=True)
@@ -107,6 +110,7 @@ class ProfileList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProjectList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self, request):
         projects = Project.objects.all()
         serializer = ProjectSerializer(projects, many=True)

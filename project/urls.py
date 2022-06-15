@@ -1,6 +1,7 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 from django.contrib.auth import views as auth_views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('rate/<pid>', views.rate, name='rate'),
     path('api/projects/', views.ProjectList.as_view()),
     path('api/profiles/', views.ProfileList.as_view()),
+    re_path(r'^api-token-auth/', obtain_auth_token)
 ]
