@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-
 from .models import Profile, Project, Rate
-
 from . forms import ProfileForm, ProjectForm, RateForm
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import ProfileSerializer, ProjectSerializer
 
 # Create your views here.
 
@@ -89,3 +90,16 @@ def rate(request, pid):
     else:
         form = RateForm()
     return render(request, 'rate.html', {'form': form, 'rated': rated})
+
+
+class ProfileList(APIView):
+    def get(self, request):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        return Response(serializer.data)
+
+class ProjectList(APIView):
+    def get(self, request):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
