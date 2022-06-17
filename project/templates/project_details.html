@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 banner" style="background-image: url('{{project.image.url}}');">
+
+            <a class="btn btn-light text-dark" href="/rate/{{project.id}}">RATE</a>
+            
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>{{project.title}}</h1>
+            <p>{{project.description}}</p>
+            <a href="{{project.link}}" target="_blank" rel="noopener noreferrer">Live site</a>
+        </div>
+    </div>
+    <div class="row flex-column">
+        <h4>All RATINGS</h4>
+        {% if ratings %}
+        {% for rating in ratings %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{rating.user.username}}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6>Design</h6>
+                                <div class="circle">
+                                    <span>{{rating.design_rate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <h6>Usability</h6>
+                                <div class="circle">
+                                    <span>{{rating.usability_rate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <h6>Content</h6>
+                                <div class="circle">
+                                    <span>{{rating.content_rate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No ratings yet</p>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}

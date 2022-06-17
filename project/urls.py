@@ -13,6 +13,7 @@ urlpatterns = [
     path('profile/edit/<uname>', views.profile_edit, name='profile_edit'),
     path('project/add/', views.add_project, name='add_project'),
     path('projects/', views.projects, name='projects'),
+    path('project/details/<int:pid>', views.project_details, name='project_details'),
     path('rate/<pid>', views.rate, name='rate'),
     path('api/projects/', views.ProjectList.as_view()),
     path('api/profiles/', views.ProfileList.as_view()),
