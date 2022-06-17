@@ -47,17 +47,17 @@ def profile_display(request, uname):
 def profile_edit(request, uname):
     if uname != request.user.username:
         return render(request, '403.html')
-    if Profile.objects.filter(user__username = uname).exists():
-        profile = Profile.objects.get(user__username = uname)
-    else:
-        profile = None
+   
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('profile_display', uname=uname)
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('index')
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm()
+    
     return render(request, 'profile.html', {'form': form})
 
 def add_project(request):

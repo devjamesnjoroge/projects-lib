@@ -34,9 +34,15 @@
       </ul>
         {% if user.is_authenticated %}
         <div class="nav_wrap">
-          <div class="nav_pic" style="background-image: url('{{request.user.profile.profile_pic.url}}');">
+         {% if request.user.profile.profile_pic %}
+         <div class="nav_pic" style="background-image: url('{{request.user.profile.profile_pic.url}}');">
 
-          </div>
+        </div>
+        {% else %}
+        <div class="nav_pic" style="background-image: url('https://res.cloudinary.com/dkz8w5n6k/image/upload/v1653900429/cld-sample.jpg');">
+
+        </div>
+        {% endif %}
           <div class="dropdown_menu">
             <a class="dropdown_item" href="/profile/display/{{request.user.username}}">Profile</a>
             <a class="dropdown_item" href="/project/add/">Your projects</a>
