@@ -83,7 +83,7 @@ def project_details(request, pid):
     return render(request, 'project_details.html', {'project': project, 'ratings': ratings})
 
 def rate(request, pid):
-    if Rate.objects.filter(project__id = pid).exists():
+    if Rate.objects.filter(user=request.user, project__id = pid).exists():
         rated = True
     else:
         rated = False

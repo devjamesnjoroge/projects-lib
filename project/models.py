@@ -5,11 +5,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
-default_img = 'https://res.cloudinary.com/dkz8w5n6k/image/upload/v1653900429/cld-sample.jpg'
+default_img = 'https://res.cloudinary.com/dkz8w5n6k/image/upload/v1655118797/qrzikn4v4wjqoebq0tfh.jpg'
 
 class Profile(models.Model):
     bio = models.TextField(blank=False, default='No bio')
-    profile_pic = CloudinaryField('image', default=default_img, blank=False)
+    profile_pic = CloudinaryField('image', default=default_img)
     contact = models.CharField(max_length=255, blank=True, default='No contact')
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
